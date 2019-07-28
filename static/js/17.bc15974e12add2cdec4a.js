@@ -1,0 +1,2 @@
+webpackJsonp([17],{"Swj/":function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var l={render:function(){var e=this.$createElement;return(this._self._c||e)("div",{staticClass:"app-container"},[this._v("\n  全局配置\n")])},staticRenderFns:[]},s=t("VU/8")(null,l,!1,null,null,null);n.default=s.exports}});
+//# sourceMappingURL=17.bc15974e12add2cdec4a.js.map

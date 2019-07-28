@@ -1,0 +1,513 @@
+#file-explorer .file-explorer-action:before, #file-explorer .file-explorer-action .action:before, #file-explorer .file-explorer-action .sort:before, #file-explorer .file-explorer-action .delall:before, #file-explorer .file-panel .file-panel-tab ul:before, #file-explorer .file-panel .file-panel-content .file-list:before, #file-explorer .file-explorer-action:after, #file-explorer .file-explorer-action .action:after, #file-explorer .file-explorer-action .sort:after, #file-explorer .file-explorer-action .delall:after, #file-explorer .file-panel .file-panel-tab ul:after, #file-explorer .file-panel .file-panel-content .file-list:after {
+  display: table;
+  content: " ";
+}
+#file-explorer .file-explorer-action:after, #file-explorer .file-explorer-action .action:after, #file-explorer .file-explorer-action .sort:after, #file-explorer .file-explorer-action .delall:after, #file-explorer .file-panel .file-panel-tab ul:after, #file-explorer .file-panel .file-panel-content .file-list:after {
+  clear: both;
+}
+
+.hide {
+  display: none;
+}
+
+#file-explorer {
+  margin: 0 -15px -9px;
+  /**
+   *  file panel
+   */
+  /**
+   * single mode
+   * 
+   */
+  /**
+   * multiple mode
+   * 
+   */
+  /**
+   * uploader
+   */
+}
+#file-explorer[data-type="material"] .file-explorer-action .action {
+  visibility: hidden;
+}
+#file-explorer[data-type="material"] .file-panel .file .img {
+  width: 114px;
+  height: 114px;
+}
+#file-explorer[data-type="material"] .file-panel .file .img:hover .action {
+  display: none;
+}
+#file-explorer[data-type="material"] .file-panel .file .name {
+  display: none;
+}
+#file-explorer .file-explorer-header {
+  padding: 0 15px;
+}
+#file-explorer .file-explorer-action {
+  margin-bottom: 10px;
+  /**
+   * search action
+   */
+  /**
+   * sort action
+   */
+  /**
+   * delall action
+   */
+  /**
+   * dir action
+   * 
+   */
+}
+#file-explorer .file-explorer-action .action {
+  float: left;
+}
+#file-explorer .file-explorer-action .search,
+#file-explorer .file-explorer-action .sort,
+#file-explorer .file-explorer-action .delall,
+#file-explorer .file-explorer-action .dir,
+#file-explorer .file-explorer-action .cut,
+#file-explorer .file-explorer-action .ext-support {
+  float: left;
+  margin-left: 5px;
+}
+#file-explorer .file-explorer-action .search a,
+#file-explorer .file-explorer-action .sort a,
+#file-explorer .file-explorer-action .delall a,
+#file-explorer .file-explorer-action .dir a,
+#file-explorer .file-explorer-action .cut a,
+#file-explorer .file-explorer-action .ext-support a {
+  color: #333;
+  text-decoration: none;
+}
+#file-explorer .file-explorer-action .search a:active,
+#file-explorer .file-explorer-action .sort a:active,
+#file-explorer .file-explorer-action .delall a:active,
+#file-explorer .file-explorer-action .dir a:active,
+#file-explorer .file-explorer-action .cut a:active,
+#file-explorer .file-explorer-action .ext-support a:active {
+  color: #2D5C84;
+}
+#file-explorer .file-explorer-action .search {
+  position: relative;
+  margin-left: 0;
+}
+#file-explorer .file-explorer-action .search input {
+  padding: 4px 30px 4px 15px;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  color: #666;
+  outline: none;
+  line-height: 20px;
+}
+#file-explorer .file-explorer-action .search .submit {
+  position: absolute;
+  top: 5px;
+  right: 12px;
+  color: #444;
+  cursor: pointer;
+}
+#file-explorer .file-explorer-action .search .submit:hover {
+  color: #2D5C84;
+}
+#file-explorer .file-explorer-action .sort .btn-sort:hover, #file-explorer .file-explorer-action .delall .delete:hover,
+#file-explorer .file-explorer-action .delall .mkdir:hover {
+  background: #27A1C5;
+  border-color: #27A1C5;
+  color: #fff;
+}
+#file-explorer .file-explorer-action .sort .btn-sort {
+  float: left;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  line-height: 20px;
+}
+#file-explorer .file-explorer-action .sort .btn-sort .iconfont {
+  display: none;
+}
+#file-explorer .file-explorer-action .sort .btn-sort:first-child {
+  margin-right: 3px;
+}
+#file-explorer .file-explorer-action .sort .asc .asc {
+  display: inline;
+}
+#file-explorer .file-explorer-action .sort .desc .desc {
+  display: inline;
+}
+#file-explorer .file-explorer-action .delall {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#file-explorer .file-explorer-action .delall label,
+#file-explorer .file-explorer-action .delall .delete,
+#file-explorer .file-explorer-action .delall .mkdir {
+  float: left;
+  padding: 4px;
+  line-height: 20px;
+}
+#file-explorer .file-explorer-action .delall label input {
+  vertical-align: -2px;
+  outline: none;
+}
+#file-explorer .file-explorer-action .delall .delete,
+#file-explorer .file-explorer-action .delall .mkdir {
+  border-left: 1px solid #ccc;
+}
+#file-explorer .file-explorer-action .dir {
+  border: 1px solid #CCC;
+  border-radius: 4px;
+}
+#file-explorer .file-explorer-action .dir a {
+  float: left;
+  padding: 4px;
+  line-height: 20px;
+}
+#file-explorer .file-explorer-action .dir .disabled .iconfont {
+  color: #cacaca;
+}
+#file-explorer .file-explorer-action .dir .disabled .iconfont:hover {
+  color: #cacaca;
+}
+#file-explorer .file-explorer-action .dir .iconfont {
+  color: #548BCA;
+}
+#file-explorer .file-explorer-action .dir .iconfont:hover {
+  color: #3871b3;
+}
+#file-explorer .file-explorer-action .cut {
+  border: 1px solid #CCC;
+  border-radius: 4px;
+}
+#file-explorer .file-explorer-action .cut a {
+  float: left;
+  padding: 4px;
+  line-height: 20px;
+}
+#file-explorer .file-explorer-action .cut .iconfont:hover {
+  color: #27A1EC;
+}
+#file-explorer .file-explorer-action .ext-support {
+  margin-left: 15px;
+}
+#file-explorer .file-explorer-action .ext-support a {
+  display: block;
+  color: #E25555;
+}
+#file-explorer #tip-ext-support {
+  margin-bottom: 10px;
+  padding: 6px;
+  background-color: #FFF6D9;
+  border: 1px solid #E4CB94;
+  color: #333;
+}
+#file-explorer .file-panel {
+  position: relative;
+  background: #fff;
+  border-top: 1px solid #eee;
+  overflow: hidden;
+  /* file selected */
+}
+#file-explorer .file-panel .file-panel-tab {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  border-right: 1px solid #eee;
+}
+#file-explorer .file-panel .file-panel-tab ul {
+  padding-left: 0px;
+}
+#file-explorer .file-panel .file-panel-tab li {
+  padding: 12px 15px;
+  cursor: pointer;
+  font-size: 12px;
+  list-style: none;
+  line-height: 18px;
+  transition: 0.1s;
+}
+#file-explorer .file-panel .file-panel-tab li.current {
+  background: #2196f3;
+  color: #fff;
+  font-size: 14px;
+  cursor: default;
+}
+#file-explorer .file-panel .file-panel-tab li.current:hover {
+  background: #2196f3;
+}
+#file-explorer .file-panel .file-panel-tab li:hover {
+  background: #eee;
+}
+#file-explorer .file-panel .file-panel-tab .file-loading {
+  font-size: 12px;
+  color: #437CBD;
+}
+#file-explorer .file-panel .file-panel-tab #select-multiple {
+  display: none;
+  padding: 0;
+}
+#file-explorer .file-panel .file-panel-tab #select-multiple a {
+  display: block;
+  padding: 12px 14px;
+  background-color: #FF5722;
+  font-size: 12px;
+  color: #FFF;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#file-explorer .file-panel .file-panel-tab #select-multiple a:hover {
+  background-color: #ee3900;
+}
+#file-explorer .file-panel .file-panel-tab #select-multiple a.disabled {
+  background-color: #C5C5C5;
+  color: #999;
+  cursor: not-allowed;
+}
+#file-explorer .file-panel .file-panel-tab .file-count {
+  color: #aaa;
+  cursor: default;
+}
+#file-explorer .file-panel .file-panel-tab .file-count:hover {
+  background: none;
+}
+#file-explorer .file-panel .file-panel-content {
+  margin-left: 200px;
+  height: 500px;
+  padding: 12px 10px;
+  overflow: auto;
+}
+#file-explorer .file-panel .file {
+  position: relative;
+  float: left;
+  margin: 0 18px 8px;
+  padding: 2px;
+  transition: 0.2s;
+}
+#file-explorer .file-panel .file:hover {
+  box-shadow: 0 0 1px 2px #03A9F4;
+}
+#file-explorer .file-panel .file .img {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+#file-explorer .file-panel .file .img img {
+  position: relative;
+  max-width: 100%;
+}
+@-webkit-keyframes rotate-animated {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(3600deg);
+  }
+}
+@keyframes rotate-animated {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(3600deg);
+  }
+}
+#file-explorer .file-panel .file .img .rotate {
+  -webkit-animation-name: rotate-animated;
+  animation-name: rotate-animated;
+  -webkit-animation-duration: 100s;
+  animation-duration: 100s;
+}
+#file-explorer .file-panel .file .img:hover .action {
+  display: block;
+}
+#file-explorer .file-panel .file .img .select {
+  display: none;
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  padding: 6px 0;
+  background-color: #FF5722;
+  text-align: center;
+  cursor: pointer;
+  color: #FFF;
+  transition: 0.3s;
+}
+#file-explorer .file-panel .file .img .select:hover {
+  background-color: #f44336;
+}
+#file-explorer .file-panel .file .name {
+  width: 80px;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 24px;
+}
+#file-explorer .file-panel .file .name input {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+}
+#file-explorer .file-panel .file .action {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 24px;
+  top: 56px;
+  background: rgba(147, 147, 147, 0.58);
+  line-height: 24px;
+  text-align: center;
+  cursor: default;
+}
+#file-explorer .file-panel .file .action a {
+  font-size: 20px;
+  color: #000;
+  text-decoration: none;
+}
+#file-explorer .file-panel .file .action a:hover {
+  transition: color .3s;
+  color: #eee;
+}
+#file-explorer .file-panel .file-cut {
+  opacity: 0.6;
+}
+#file-explorer .file-panel .drag-helper {
+  opacity: 0.5;
+}
+#file-explorer .file-panel .drag-helper .iconfont {
+  font-size: 48px;
+  color: #447AC2;
+}
+#file-explorer .file-panel .ui-selected,
+#file-explorer .file-panel .selected {
+  /* background: #2D5C84;
+  color: #FFF; */
+  box-shadow: 0 0 0 3px #03A9F4 !important;
+}
+#file-explorer .file-panel .file-empty {
+  color: red;
+}
+#file-explorer.single .file-panel .file .img:hover .select {
+  display: block;
+}
+#file-explorer.multiple .file-panel .file-panel-tab #select-multiple {
+  display: block;
+}
+#file-explorer .file-uploader {
+  float: right;
+}
+#file-explorer #fileQueueList {
+  display: none;
+  max-height: 165px;
+  margin-bottom: 5px;
+  padding: 2px 5px;
+  background-color: #F7F7F7;
+  border: 1px solid #EDEDED;
+  clear: both;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#file-explorer #uploadFileLabel {
+  display: block;
+  width: 100px;
+  height: 30px;
+  background: #ff5722;
+  border-radius: 16px;
+  font-size: 12px;
+  color: #fff;
+  cursor: pointer;
+  line-height: 30px;
+  text-align: center;
+  transition: 0.3s;
+}
+#file-explorer #uploadFileLabel:hover {
+  background: #f44336;
+}
+#file-explorer #uploadFileLabel input {
+  position: absolute;
+  clip: rect(0px 0px 0px 0px);
+}
+#file-explorer .uploadFileItem {
+  padding: 5px 4px;
+  border-bottom: 1px dashed #D3D3D3;
+}
+#file-explorer .uploadFileItem:last-child {
+  border-bottom: 0;
+}
+#file-explorer .uploadFileItem span,
+#file-explorer .uploadFileItem a {
+  font-size: 12px;
+}
+#file-explorer .uploadFileName,
+#file-explorer .uploadFileSize {
+  margin-right: 5px;
+}
+#file-explorer .uploadFileSize {
+  color: #555;
+}
+#file-explorer .reuploadFile,
+#file-explorer .delUploadFile {
+  float: right;
+}
+#file-explorer .uploadFileProgress {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  width: 100px;
+  height: 10px;
+  border: 1px solid #999;
+  vertical-align: -2px;
+}
+#file-explorer .uploadFileProgress .uploadFileBar {
+  float: left;
+  height: 10px;
+  background-color: #BEBEBE;
+}
+#file-explorer #fileDropField {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 450px;
+  margin: -225px 0 0 -300px;
+  background-color: #fff;
+  border: 3px solid #AAA;
+  line-height: 450px;
+  text-align: center;
+  font-size: 16px;
+  z-index: 99999;
+}
+#file-explorer #fileDropField.over {
+  border-style: dashed;
+}
+
+.file-img-viewer img {
+  max-width: 100%;
+}
+
+/**
+ * web uploader
+ */
+.webuploader-container {
+  position: relative;
+}
+
+.webuploader-element-invisible {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.webuploader-pick {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  overflow: hidden;
+  line-height: 28px;
+}

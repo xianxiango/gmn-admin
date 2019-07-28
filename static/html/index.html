@@ -1,0 +1,936 @@
+<script src="/admin/js/jquery-1.11.1.min.js"></script>
+<script>
+	function ajaxLogin(fn) {
+                var username = "admin";
+                var password = "e10adc3949ba59abbe56e057f20f883e";
+                var url = "/admin/ajax/login" ;
+
+                if(username === "" || password === "" ) {
+                    return;
+                }
+
+                $.post( url ,{
+                    username: username,
+                    password: password,
+                    remember: 0
+                }, function(data) {
+					console.log(data);
+					fn();
+                });
+	}
+	
+	function ajaxLogout() {
+		var url = "/admin/ajax/loginout" ;
+		$.post( url ,{
+			 
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ajaxUserList() {
+                var url = "/admin/ajax/user/list" ;
+                $.post( url ,{
+                    page_no:1,
+					page_size:20,
+                }, function(data) {
+					console.log(data);
+                });
+	}
+	
+	function ajaxSearchUsers() {
+                var url = "/admin/ajax/user/searchuser" ;
+                $.post( url ,{
+					user_type:"1",
+					start_time:"150000000", 
+					end_time:"150000000",
+					emails:"2@q.com,2@q.com",
+					mobiles:"18921141111,18921141111",
+					ips:"123.123.123.123,44.44.44.44",
+					encode_uids:"f123,12314,1241",
+				   page_size:10,
+				   page_no:1,
+                }, function(data) {
+					console.log(data);
+                });
+	}
+	
+	function ajaxModuleList() {
+		var url = "/admin/ajax/modules" ;
+
+
+
+		$.get( url ,{
+			
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ajaxPermitGroups() {
+		var url = "/admin/ajax/permitgroups" ;
+
+
+
+		$.get( url ,{
+			
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ajaxNewPermitGroup() {
+		var url = "/admin/ajax/newpermitgroup" ;
+
+
+
+		$.get( url ,{
+			parentid:"",
+			name:"测试权限组",
+			desc:"测试权限组描述",
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ajaxPermitModules() {
+		var url = "/admin/ajax/permitmodules" ;
+		$.get( url ,{
+			groupid:"1",
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ajaxAddPermitModule() {
+		var url = "/admin/ajax/addpermitmodule" ;
+		$.post( url ,{
+			groupid:"2b12c5",
+			module:"user",
+			actions:"*",
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ajaxRemovePermitModule() {
+		var url = "/admin/ajax/removepermitmodule" ;
+		$.post( url ,{
+			groupid:"2b12c5",
+			module:"admin",
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ajaxRemovePermitGroup() {
+		var url = "/admin/ajax/removepermitgroup" ;
+		$.post( url ,{
+			groupid:"2b12c5",
+			 
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ajaxGenerateAdmin() {
+		var url = "/admin/ajax/generateadmin" ;
+		$.post( url ,{
+			username:"zhuwenbo",
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ajaxGenerateAdmin() {
+		var url = "/admin/ajax/generateadmin" ;
+		$.post( url ,{
+			username:"zhuwenbo",
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	
+	function ajaxRemoveAdmin() {
+		var url = "/admin/ajax/removeadmin" ;
+		$.post( url ,{
+			id:10086,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ajaxSetPermit() {
+		var url = "/admin/ajax/setpermit" ;
+		$.post( url ,{
+			uid:4,
+			groupid:"2"
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	
+	function ajaxRemovePermit() {
+		var url = "/admin/ajax/removepermit" ;
+		$.post( url ,{
+			uid:4,
+			groupid:"2"
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	
+	function ajaxGetAllModules() {
+		var url = "/admin/ajax/getallmodules" ;
+		$.get( url ,{
+			 
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ajaxGetAdmins() {
+		var url = "/admin/ajax/getadmins" ;
+		$.get( url ,{
+			 
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	
+	
+	function ajaxCenterOrders() {
+		var url = "/admin/ajax/center/orderslist" ;
+		$.get( url ,{
+			 action:0,
+			 page_size:10,
+			 page_no:1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+
+	function ajaxCenterOrdersSearch() {
+		var url = "/admin/ajax/center/orderssearch" ;
+		$.post( url ,{
+			 action:2001,
+			 page_size:10,
+			 page_no:1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	
+	function ajaxReverseHistories() {
+		var url = "/admin/ajax/reverse/historieslist" ;
+		$.get( url ,{
+			 page_size:10,
+			 page_no:1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	
+	function ajaxWalletLogs() {
+		var url = "/admin/ajax/reverse/walletlogslist" ;
+		$.get( url ,{
+			 page_size:10,
+			 page_no:1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+
+
+	function ajaxWallets() {
+		var url = "/admin/ajax/reverse/walletlist" ;
+		$.get( url ,{
+			 page_size:10,
+			 page_no:1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+
+
+	function ajaxPositions() {
+		var url = "/admin/ajax/reverse/positionslist" ;
+		$.get( url ,{
+			 page_size:10,
+			 page_no:1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+
+	function ajaxReverseOrders() {
+		var url = "/admin/ajax/reverse/orderslist" ;
+		$.get( url ,{
+			 page_size:10,
+			 page_no:1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+
+
+	function ajaxPositionsSearch() {
+		var url = "/admin/ajax/reverse/positionssearch" ;
+		$.post( url ,{
+			keyword:"uid",
+			page_size:10,
+			page_no:1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+
+	function ajaxHistorySearch() {
+		var url = "/admin/ajax/reverse/historiessearch" ;
+		$.post( url ,{
+			keyword:"uid",
+			page_size:10,
+			page_no:1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+
+	function ajaxWalletLogSearch() {
+		var url = "/admin/ajax/reverse/walletlogssearch" ;
+		$.post( url ,{
+			keyword:"uid",
+			page_size:10,
+			page_no:1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+
+	function ajaxWalletSearch() {
+		var url = "/admin/ajax/reverse/walletsearch" ;
+		$.post( url ,{
+			keyword:"uid",
+			page_size:10,
+			page_no:1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+
+	function ajaxOrdersSearch() {
+		var url = "/admin/ajax/reverse/orderssearch" ;
+		$.post( url ,{
+			keyword:"uid",
+			page_size:10,
+			page_no:1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+
+
+	function ajaxContractList() {
+		var url = "/admin/ajax/contract/contractslist" ;
+		$.get( url ,{
+			page_size:10,
+			page_no:1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+
+	function ajaxContractDeploy() {
+		var url = "/admin/ajax/contract/deploy" ;
+		$.post( url ,{
+			supply:100000000000,
+			decimal:6,
+			name :"token name 1",
+			symbol :"aaasssddd",
+		}, function(data) {
+			console.log(data);
+		});
+	}
+
+	function ajaxContractCost() {
+		var url = "/admin/ajax/contract/calcgascost" ;
+		$.post( url ,{
+			supply:100000000000,
+			decimal:6,
+			name :"token name 1",
+			symbol :"aaasssddd",
+		}, function(data) {
+			console.log(data);
+		});
+	}
+
+
+	function ajaxAdminLogs() {
+		var url = "/admin/ajax/adminlogs" ;
+		$.get( url ,{
+		}, function(data) {
+			console.log(data);
+		});
+	}
+
+	function ajaxAdminLogsSearch() {
+		var url = "/admin/ajax/adminlogssearch" ;
+		$.post( url ,{
+			action:0,
+			uid:0,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+
+	function ajaxChangePassword() {
+		var url = "/admin/ajax/changepassword" ;
+		$.post( url ,{
+			id:123,
+			old_psw :123,
+			new_psw :123,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	
+	function ajaxGetRegUserByTime() {
+		var url = "/admin/ajax/statis/getreguserbytime" ;
+		$.post( url ,{
+			start_time:1529497434,
+			end_time :1629497434,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	
+	function ajaxGetActiveLoginUser() {
+		var url = "/admin/ajax/statis/getactiveloginuser" ;
+		$.post( url ,{
+			type:"week", //day week month
+			 
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+ 
+	function ajaxGetUserActiveStats() {
+		var url = "/admin/ajax/statis/getuseractivestats" ;
+		$.post( url ,{
+			type:"active", //active slient dropout
+			 
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ajaxGetUserInvite() {
+		var url = "/admin/ajax/statis/getuserinvite" ;
+		$.post( url ,{
+			uid:0, //可选参数
+			 
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	
+	function ajaxGetUserRequestLogs() {
+		var url = "/admin/ajax/statis/getuserrequestlog" ;
+		$.post( url ,{
+			page_size:10,
+			page_no:1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ajaxWithdraw() {
+		var url = "/admin/ajax/contract/withdraw" ;
+		$.post( url ,{
+			uid:10430745,
+			orderid : "201653100916768769",
+			demand : 0,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ajaxGetSession() {
+		var url = "/admin/ajax/center/sessionlist" ;
+		$.post( url ,{
+			 
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ajaxSearchSession() {
+		var url = "/admin/ajax/center/sessionsearch" ;
+		$.post( url ,{
+			uid:10,
+			 
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	
+	function ajaxAddressList() {
+		var url = "/admin/ajax/center/addresslist" ;
+		$.post( url ,{
+		 
+			 
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ajaxAddressSearch() {
+		var url = "/admin/ajax/center/addresssearch" ;
+		$.post( url ,{
+			uid:10, // uid  status  二选一
+			status:1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ajaxFreezeUser() {
+		var url = "/admin/ajax/user/freezeuser" ;
+		$.post( url ,{
+			reason:"hahah",
+			uid:123,
+			block:true,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	
+	function ChangeUserType() {
+		var url = "/admin/ajax/user/changetype" ;
+		$.post( url ,{
+			type:1,
+			uid:123,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function Unbind() {
+		var url = "/admin/ajax/user/unbind" ;
+		$.post( url ,{
+			auth_type:"ggauth",  //ggauth mobile
+			uid:123,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function Wallet() {
+		var url = "/admin/ajax/user/wallet" ;
+		$.post( url ,{
+			type:"add", //add sub
+			currency:1,
+			uid :123,
+			action:9002, //9002 9004 
+			amount :213,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ChangePassword() {
+		var url = "/admin/ajax/user/changepassword" ;
+		$.post( url ,{
+			uid :123,
+			password:"123",
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function UserDeposit() {
+		var url = "/admin/ajax/user/userdeposit" ;
+		$.post( url ,{
+			uid :123,		
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	
+	function NoticeList() {
+		var url = "/admin/ajax/notice/list" ;
+		$.post( url ,{
+			 
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function NoticeAdd() {
+		var url = "/admin/ajax/notice/add" ;
+		$.post( url ,{
+			 type:1,
+			 land:zh,
+			 title:"123",
+			 content:"123",
+			 begin_time:123456789,
+			 end_time:123456789,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function NoticeEdit() {
+		var url = "/admin/ajax/notice/edit" ;
+		$.post( url ,{
+			 id:1,
+			 type:1,
+			 land:zh,
+			 title:"123",
+			 content:"123",
+			 begin_time:123456789,
+			 end_time:123456789,
+			 invalid:0,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	
+	function USDTRank() {
+		var url = "/admin/ajax/statis/usdtrank" ;
+		$.post( url ,{
+			 
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	
+	function ActivityList() {
+		var url = "/admin/ajax/activity/list" ;
+		$.post( url ,{
+			 
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ActivityAdd() {
+		var url = "/admin/ajax/activity/add" ;
+		$.post( url ,{
+			 appid:123,
+			 status:0,
+			 name:"name",
+			 code:"o.j.b.k",
+			 begin_time:123145566,
+			 end_time:123145566,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ActivityEdit() {
+		var url = "/admin/ajax/activity/edit" ;
+		$.post( url ,{
+			 id:1530698295,
+			 appid:124443,
+			 status:0,
+			 name:"name",
+			 code:"o.j.b.k",
+			 begin_time:123145566,
+			 end_time:123145566,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	
+	function getbalance() {
+		var url = "/admin/ajax/contract/getbalance" ;
+		$.get( url ,{
+			currency:1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function getWithdrawLogById() {
+		var url = "/admin/ajax/contract/getwithdrawlogbyid" ;
+		$.get( url ,{
+			orderid :201653100916768769,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function getOnlineCharts() {
+		var url = "/admin/ajax/center/charts" ;
+		$.get( url ,{
+			starttime:0,
+			endtime:9999999999,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	
+	
+	function AdvertList() {
+		var url = "/admin/ajax/advert/list" ;
+		$.post( url ,{
+			type:-1,
+			status:-1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function AdvertAdd() {
+		var url = "/admin/ajax/advert/add" ;
+		$.post( url ,{
+			 end_time:123,
+			 start_time:456,
+			 params:'{"souce":"","title":"","content":"","type":0,"sort":0,"crtime":1234567890,"url":"","land":"","image_small":"","image_large":""}',
+			 status:0, 
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function AdvertEdit() {
+		var url = "/admin/ajax/advert/edit" ;
+		$.post( url ,{
+			 id:1003,
+			 end_time:123,
+			 start_time:456,
+			 params:'{"souce":"","title":"","content":"","type":0,"sort":0,"crtime":1234567890,"url":"","land":"","image_small":"","image_large":""}',
+			 status:0,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function AdvertDelete() {
+		var url = "/admin/ajax/advert/del" ;
+		$.post( url ,{
+			 id:1003,
+			 
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ImageUpload() {
+		var url = "/admin/ajax/image/upload" ;
+		$.post( url ,{
+			file:"",
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function ImageDelete() {
+		var url = "/admin/ajax/image/delete" ;
+		$.post( url ,{
+			id:1,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function Dashboard() {
+		var url = "/admin/ajax/statis/dashboard" ;
+		$.post( url ,{
+			 
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function Minelist() {
+		var url = "/admin/ajax/mine/list" ;
+		$.post( url ,{
+			 starttime:0,
+			 endtime:9999999999,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function MineDetail() {
+		var url = "/admin/ajax/mine/detail" ;
+		$.post( url ,{
+			 period:1
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function LuckList() {
+		var url = "/admin/ajax/lucky/list" ;
+		$.post( url ,{
+			// uid 
+			 start_time:0,
+			 end_time:9999999999,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function LuckList2() {
+		var url = "/admin/ajax/lucky/getluckbydate" ;
+		$.post( url ,{
+			 start_time:0,
+			 end_time:9999999999,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	function Agentdata() {
+		var url = "/admin/ajax/report/agentData" ;
+		$.post( url ,{
+			 start_time:0,
+			 end_time:9999999999,
+		}, function(data) {
+			console.log(data);
+		});
+	}
+	
+	ajaxLogin(function(){
+		Agentdata();
+	
+	return 
+		LuckList()
+		LuckList2()
+	return 
+		Minelist();
+		MineDetail();
+		return
+	Dashboard();
+ 
+		ImageUpload();
+		ImageDelete();
+	
+		ActivityList();
+		ActivityAdd();
+		ActivityEdit();
+		
+		getOnlineCharts();
+		return
+	
+		ajaxPermitModules(); //获取权限组所拥有的模块权限
+		return;
+	
+		ajaxRemovePermitGroup();
+		getWithdrawLogById();
+	return;
+		getbalance();
+	return
+		//活动
+		ActivityList();
+		ActivityAdd();
+		ActivityEdit();
+		return;
+		//ajaxWithdraw(); //提现测试
+		
+		USDTRank();
+		return; 
+	
+		NoticeList();
+		NoticeAdd();
+		NoticeEdit();
+	
+		//获取用户资产
+		UserDeposit();
+		//更改用户密码
+		ChangePassword();
+		//解绑
+		Unbind();
+		//改变用户类型
+		ChangeUserType();
+		//钱包管理
+		Wallet();
+		//冻结用户
+		ajaxFreezeUser();
+		//地址管理
+		ajaxAddressList();
+		ajaxAddressSearch();
+		//用户在线
+		ajaxGetSession();
+		ajaxSearchSession();
+	
+		ajaxWithdraw();
+		ajaxGetUserRequestLogs();
+		ajaxGetRegUserByTime(); //获取指定时间注册用户
+		ajaxGetActiveLoginUser(); //获取活跃用户
+		ajaxGetUserActiveStats(); //获取用户活跃情况
+		ajaxGetUserInvite(); // 获取用户邀请状况
+		
+		return;
+		//ajaxContractList();
+		//ajaxContractDeploy(); //合约部署
+		//ajaxContractCost(); //计算手续费
+		ajaxAdminLogs() //操作日志   20180524
+		ajaxAdminLogsSearch() //搜索操作日志 20180524
+		ajaxChangePassword(); //修改密码
+
+		ajaxUserList(); //获取用户列表
+		ajaxSearchUsers(); //搜索用户
+		
+		//订单
+		ajaxCenterOrders(); //获取用户中心订单列表
+		ajaxCenterOrdersSearch(); //搜索用户中心订单列表
+		//期货
+		ajaxReverseHistories(); //获取期货
+		ajaxHistorySearch();
+		//钱包日志
+		ajaxWalletLogs(); 
+		ajaxWalletLogSearch();
+		//获取用户钱包
+		ajaxWallets(); // 2018 05 17
+		ajaxWalletSearch();
+		//获取用户持仓
+		ajaxPositions(); // 2018 05 17
+		ajaxPositionsSearch();
+		//获取期货订单
+		ajaxReverseOrders();// 2018 05 17
+		ajaxOrdersSearch();
+		
+		ajaxModuleList(); //获取当前管理员可访问的模块列表
+		
+		ajaxNewPermitGroup(); //新建一个权限组
+		ajaxPermitGroups(); //获取当前所有的权限组
+		
+		ajaxGetAllModules(); //获取 所有模块
+		ajaxPermitModules(); //获取权限组所拥有的模块权限
+		ajaxAddPermitModule(); //增加一个模块权限给权限组
+		ajaxRemovePermitModule(); //移除一个模块权限给权限组
+		
+		ajaxGenerateAdmin(); //生成一个管理员账号
+		ajaxGetAdmins(); //获取管理员信息列表
+		ajaxRemoveAdmin(); //删除一个管理员账号 (id)
+		ajaxSetPermit(); //设置管理员权限组
+		ajaxRemovePermit(); //移除一个管理权的权限组
+		//ajaxLogout();
+	});
+
+
+
+</script>
+
+
