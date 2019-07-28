@@ -1,8 +1,8 @@
 package config
 
 import (
-	_ "gmn/routers"
-	//aes "gmn/common/crypto"
+	_ "gmn-admin/routers"
+	//aes "gmn-admin/common/crypto"
 )
 
 func LoadConfigDebug() {

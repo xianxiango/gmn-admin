@@ -3,14 +3,14 @@
 package routers
 
 import (
-	"gmn/controllers"
+	"gmn-admin/controllers"
 
 	"github.com/astaxie/beego"
 )
 
 func init() {
 	//admin
-	nsAdmin := beego.NewNamespace("/gmn",
+	nsAdmin := beego.NewNamespace("/gmn-admin",
 		//系统
 		beego.NSRouter("/image/upload", &controllers.BaseController{}, "*:UploadImage"),
 		beego.NSRouter("/image/delete", &controllers.BaseController{}, "*:DeleteUpload"),

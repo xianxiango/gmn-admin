@@ -2,7 +2,7 @@ package model
 
 import (
 	"fmt"
-	db "gmn/db/center"
+	db "gmn-admin/db/center"
 	"time"
 )
 

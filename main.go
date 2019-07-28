@@ -1,18 +1,18 @@
 package main
 
 import (
-	"flag"
-	"gmn/config"
-	_ "gmn/routers"
+	// "flag"
+	"gmn-admin/config"
+	_ "gmn-admin/routers"
 
 	"github.com/astaxie/beego"
 )
 
-var mode = flag.String("mode", "debug", "debug / release")
-var etcd = flag.String("etcdAddr", "127.0.0.1:11112", "etcd address")
+// var mode = flag.String("mode", "debug", "debug / release")
+// var etcd = flag.String("etcdAddr", "127.0.0.1:11112", "etcd address")
 
 func main() {
-	flag.Parse()
+	// flag.Parse()
 	config.LoadConfigDebug()
 
 	beego.SetStaticPath("/admin", "./static")
