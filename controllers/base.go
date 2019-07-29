@@ -7,6 +7,7 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
+	"strings"
 	systime "time"
 
 	"github.com/astaxie/beego"
@@ -185,5 +186,34 @@ func (this *BaseController) ExportXlsx(data interface{}) {
 	if err != nil {
 		fmt.Printf("eee", err.Error())
 	}
+
+}
+
+func (this *BaseController) Prepare() {
+	this.handleParams()
+	controllerName, actionName := this.GetControllerAndAction()
+	this.controllerName = strings.ToLower(controllerName[0 : len(controllerName)-10])
+	this.actionName = strings.ToLower(actionName)
+	log.Print("prepare start ")
+
+}
+
+func (this *BaseController) handleParams() {
+	pageSize, _ := this.GetInt("page_size")
+	pageNo, _ := this.GetInt("page_no")
+
+	if pageNo == 0 {
+		this.Page.PageNo = 1
+	} else {
+		this.Page.PageNo = pageNo
+	}
+
+	if pageSize == 0 {
+		this.Page.PageSize = 20
+	} else {
+		this.Page.PageSize = pageSize
+	}
+
+	this.Page.Offset = (this.Page.PageNo - 1) * this.Page.PageSize
 
 }

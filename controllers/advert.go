@@ -1,26 +1,54 @@
 package controllers
 
-type BannerController struct {
+import (
+	center "gmn-admin/models/center"
+)
+
+type AdvertController struct {
 	BaseController
 }
 
-func (this *BannerController) List() { //获取列表
-	show, _ := this.GetInt("show")
-	// activities, total := center.GetBanners(this.Page.Offset, this.Page.PageSize, show)
+func (this *AdvertController) List() { //获取列表
+	module, _ := this.GetInt("module")
+	activities, total := center.GetImagelist(module, this.Page.PageSize, this.Page.Offset)
 
 	this.jsonResult(map[string]interface{}{
 		"message": "操作成功",
 		"code":    0,
 		"data": map[string]interface{}{
-			"list":      show,
-			"total":     2,
+			"list":      activities,
+			"total":     total,
 			"page_no":   this.Page.PageNo,
 			"page_size": this.Page.PageSize,
 		},
 	})
 }
+func (this *AdvertController) Add() { //新增
+	// id, _ := this.GetInt("id")
+	title := this.GetString("title")
+	content := this.GetString("content")
+	url := this.GetString("url")
+	isShow, _ := this.GetInt("isShow")
+	module, _ := this.GetInt("module")
 
-// func (this *BannerController) Edit() { //编辑
+	advert := center.NewImagelist()
+
+	advert.Title = title
+	advert.Content = content
+	advert.Module = module
+	advert.IsShow = isShow
+	advert.Url = url
+	err := advert.Insert()
+	if err != nil {
+		panic(err)
+	}
+	this.jsonResult(map[string]interface{}{
+		"message": "操作成功",
+		"code":    0,
+	})
+}
+
+// func (this *AdvertController) Edit() { //编辑
 // 	id, _ := this.GetInt("id")
 // 	title := this.GetString("title")
 // 	lang := this.GetString("lang")

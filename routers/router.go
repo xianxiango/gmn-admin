@@ -1,5 +1,3 @@
-// +build !super
-
 package routers
 
 import (
@@ -14,9 +12,8 @@ func init() {
 		//系统
 		beego.NSRouter("/image/upload", &controllers.BaseController{}, "*:UploadImage"),
 		beego.NSRouter("/image/delete", &controllers.BaseController{}, "*:DeleteUpload"),
-
-		//广告
-		beego.NSRouter("/banner/list", &controllers.BannerController{}, "*:List"),
+		beego.NSRouter("/advert/add", &controllers.AdvertController{}, "*:Add"),
+		beego.NSRouter("/advert/list", &controllers.AdvertController{}, "*:List"),
 	)
 
 	beego.AddNamespace(nsAdmin)
