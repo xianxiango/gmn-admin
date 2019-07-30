@@ -2,6 +2,7 @@ package controllers
 
 import (
 	center "gmn-admin/models/center"
+	"log"
 )
 
 type AdvertController struct {
@@ -9,6 +10,7 @@ type AdvertController struct {
 }
 
 func (this *AdvertController) List() { //获取列表
+	log.Println("aaa")
 	this.Search()
 }
 func (this *AdvertController) Search() { //获取列表
