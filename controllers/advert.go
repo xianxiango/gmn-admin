@@ -9,8 +9,12 @@ type AdvertController struct {
 }
 
 func (this *AdvertController) List() { //获取列表
+	this.Search()
+}
+func (this *AdvertController) Search() { //获取列表
 	module, _ := this.GetInt("module")
-	activities, total := center.GetImagelist(module, this.Page.PageSize, this.Page.Offset)
+	isShow, _ := this.GetInt("isShow")
+	activities, total := center.GetImagelist(module, isShow, this.Page.PageSize, this.Page.Offset)
 
 	this.jsonResult(map[string]interface{}{
 		"message": "操作成功",
@@ -48,78 +52,84 @@ func (this *AdvertController) Add() { //新增
 	})
 }
 
-// func (this *AdvertController) Edit() { //编辑
-// 	id, _ := this.GetInt("id")
-// 	title := this.GetString("title")
-// 	lang := this.GetString("lang")
-// 	show, _ := this.GetInt("show")
-// 	targetapp := this.GetString("targetapp")
-// 	targetmobile := this.GetString("targetmobile")
-// 	targetpc := this.GetString("targetpc")
-// 	sortapp, _ := this.GetInt("sortapp")
-// 	sortmobile, _ := this.GetInt("sortmobile")
-// 	sortpc, _ := this.GetInt("sortpc")
-// 	imagepc := this.GetString("imagepc")
-// 	imageweb := this.GetString("imageweb")
-// 	imageios := this.GetString("imageios")
-// 	imageandroid := this.GetString("imageandroid")
+func (this *AdvertController) Edit() { //新增
+	id, _ := this.GetInt("id")
+	title := this.GetString("title")
+	content := this.GetString("content")
+	url := this.GetString("url")
+	isShow, _ := this.GetInt("isShow")
+	// module, _ := this.GetInt("module")
 
-// 	Banner := center.GetBannerById(id)
-// 	if Banner.Id == 0 {
-// 		this.jsonFailResult("找不到该记录")
-// 		return
-// 	}
+	advert := center.NewImagelist()
 
-// 	{
-// 		Banner.Title = title
-// 		Banner.Lang = lang
-// 		Banner.Show = show
-// 		Banner.Targetapp = targetapp
-// 		Banner.Targetmobile = targetmobile
-// 		Banner.Targetpc = targetpc
-// 		Banner.Sortapp = sortapp
-// 		Banner.Sortmobile = sortmobile
-// 		Banner.Sortpc = sortpc
-// 		Banner.Imageios = imageios
-// 		Banner.Imageandroid = imageandroid
-// 		Banner.Imageweb = imageweb
-// 		Banner.Imagepc = imagepc
-// 		Banner.Updatetime = time.Now()
-// 		err := Banner.Update("Title,Targetapp,Targetmobile,Targetpc,Lang,Show,SortApp,SortMobile,Sortpc,Imageios,Imageandroid,,Imageweb,Imagepc,Updatetime")
-// 		if err != nil {
-// 			msg = map[string]interface{}{
-// 				"message": err,
-// 				"code":    502,
-// 			}
-// 		} else {
-// 			api.AdminBanner()
-// 		}
-// 		this.jsonResult(msg)
-// 	}
+	advert.Title = title
+	advert.Content = content
+	advert.IsShow = isShow
+	advert.Url = url
+	advert.ID = id
+	err := advert.Update("Url,Title,Content,IsShow")
+	if err != nil {
+		panic(err)
+	}
+	this.jsonResult(map[string]interface{}{
+		"message": "操作成功",
+		"code":    0,
+	})
+}
 
-// 	this.jsonResult(map[string]interface{}{
-// 		"message": "操作成功",
-// 		"code":    0,
-// 	})
-// }
+func (this *AdvertController) Del() { //新增
+	id, _ := this.GetInt("id")
+	// module, _ := this.GetInt("module")
 
-// func (this *BannerController) Delete() { //删除
-// 	id, _ := this.GetInt("id")
+	advert := center.NewImagelist()
 
-// 	Banner := center.GetBannerById(id)
-// 	if Banner.Id == 0 {
-// 		this.jsonFailResult("找不到该记录")
-// 		return
-// 	}
+	advert.ID = id
+	err := advert.Delete()
+	if err != nil {
+		panic(err)
+	}
+	this.jsonResult(map[string]interface{}{
+		"message": "操作成功",
+		"code":    0,
+	})
+}
 
-// 	err := Banner.Delete()
-// 	if err != nil {
-// 		msg = map[string]interface{}{
-// 			"message": err,
-// 			"code":    502,
-// 		}
-// 	} else {
-// 		api.AdminBanner()
-// 	}
-// 	this.jsonResult(msg)
-// }
+func (this *AdvertController) IsShow() { //新增
+	id, _ := this.GetInt("id")
+	isShow, _ := this.GetInt("isShow")
+	// module, _ := this.GetInt("module")
+
+	advert := center.NewImagelist()
+
+	advert.IsShow = isShow
+	advert.ID = id
+	err := advert.Update("IsShow")
+	if err != nil {
+		panic(err)
+	}
+	this.jsonResult(map[string]interface{}{
+		"message": "操作成功",
+		"code":    0,
+	})
+}
+
+func (this *AdvertController) SetTop() { //新增
+	id, _ := this.GetInt("id")
+	module, _ := this.GetInt("module")
+	// module, _ := this.GetInt("module")
+
+	maxSort := center.GetFindSort(module)
+
+	advert := center.NewImagelist()
+
+	advert.Sort = maxSort + 1
+	advert.ID = id
+	err := advert.Update("Sort")
+	if err != nil {
+		panic(err)
+	}
+	this.jsonResult(map[string]interface{}{
+		"message": "操作成功",
+		"code":    0,
+	})
+}
