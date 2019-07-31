@@ -19,6 +19,8 @@ func init() {
 		beego.NSRouter("/advert/isshow", &controllers.AdvertController{}, "*:IsShow"),
 		beego.NSRouter("/advert/del", &controllers.AdvertController{}, "*:Del"),
 		beego.NSRouter("/advert/settop", &controllers.AdvertController{}, "*:SetTop"),
+		beego.NSRouter("/advert/gettext", &controllers.AdvertController{}, "*:GetTextList"),
+		beego.NSRouter("/advert/settext", &controllers.AdvertController{}, "*:SetTextList"),
 	)
 
 	beego.AddNamespace(nsAdmin)

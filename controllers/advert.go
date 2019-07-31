@@ -133,3 +133,32 @@ func (this *AdvertController) SetTop() { //新增
 		"code":    0,
 	})
 }
+
+func (this *AdvertController) GetTextList() {
+	// content := this.GetString("content")
+	// module, _ := this.GetInt("module")
+
+	maxSort := center.GetTextlist()
+
+	this.jsonResult(map[string]interface{}{
+		"message": "操作成功",
+		"code":    0,
+		"data": map[string]interface{}{
+			"list": maxSort,
+		},
+	})
+}
+func (this *AdvertController) SetTextList() {
+	content := this.GetString("content")
+	module, _ := this.GetInt("module")
+
+	advert := center.NewTextlist()
+	advert.Content = content
+	advert.Module = module
+	advert.Insert()
+
+	this.jsonResult(map[string]interface{}{
+		"message": "操作成功",
+		"code":    0,
+	})
+}
