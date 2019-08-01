@@ -9,6 +9,9 @@ import (
 func init() {
 	//admin
 	nsAdmin := beego.NewNamespace("/gmn-admin",
+		//登陆
+		beego.NSRouter("/login", &controllers.AdminController{}, "*:AjaxLogin"),
+		beego.NSRouter("/loginout", &controllers.AdminController{}, "*:Logout"),
 		//系统
 		beego.NSRouter("/image/upload", &controllers.BaseController{}, "*:UploadImage"),
 		beego.NSRouter("/image/delete", &controllers.BaseController{}, "*:DeleteUpload"),

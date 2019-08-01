@@ -217,3 +217,9 @@ func (this *BaseController) handleParams() {
 	this.Page.Offset = (this.Page.PageNo - 1) * this.Page.PageSize
 
 }
+
+//获取用户IP地址
+func (this *BaseController) getClientIp() string {
+	s := strings.Split(this.Ctx.Request.RemoteAddr, ":")
+	return s[0]
+}
