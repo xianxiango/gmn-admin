@@ -62,10 +62,9 @@ UNLOCK TABLES;
 
 
 CREATE TABLE `textlist` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `Module` tinyint(2) DEFAULT NULL,
+  `Module` tinyint(2) NOT NULL,
   `Content` LONGBLOB,
   `CreateTime` datetime DEFAULT CURRENT_TIMESTAMP,
   `UpdateTime` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`Module`)
 )

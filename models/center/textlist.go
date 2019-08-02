@@ -7,7 +7,6 @@ import (
 )
 
 type Textlist struct {
-	ID         int       `json:"ID" xorm:"ID"`
 	Content    string    `json:"Content" xorm:"Content"`
 	Module     int       `json:"Module" xorm:"Module"`
 	Createtime time.Time `json:"CreateTime" xorm:"CreateTime"`
@@ -30,7 +29,7 @@ func GetTextlist() []Textlist {
 }
 
 func (c *Textlist) Insert() error {
-	sql := fmt.Sprintf(`INSERT INTO textlist(Content,Module) VALUES("%s", %d) ON DUPLICATE KEY UPDATE Content=VALUES(Content),Module=VALUES(Module)`, c.Content, c.Module)
+	sql := fmt.Sprintf(`INSERT INTO textlist(Content,Module) VALUES('%s', %d) ON DUPLICATE KEY UPDATE Content=VALUES(Content),Module=VALUES(Module)`, c.Content, c.Module)
 	_, err := db.GetDB().Exec(sql)
 	if err != nil {
 		panic(err)
