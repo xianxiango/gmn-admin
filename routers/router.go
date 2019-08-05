@@ -14,6 +14,7 @@ func init() {
 		beego.NSRouter("/loginout", &controllers.AdminController{}, "*:Logout"),
 		//系统
 		beego.NSRouter("/image/upload", &controllers.BaseController{}, "*:UploadImage"),
+		beego.NSRouter("/image/upload2", &controllers.BaseController{}, "*:UploadImage2"),
 		beego.NSRouter("/image/delete", &controllers.BaseController{}, "*:DeleteUpload"),
 		beego.NSRouter("/advert/add", &controllers.AdvertController{}, "*:Add"),
 		beego.NSRouter("/advert/list", &controllers.AdvertController{}, "*:List"),

@@ -31,5 +31,5 @@ stat.*
 gmn-admin-linux-amd64
 stat-linux-amd64
 static/upload
-conf
+conf/
 app.conf

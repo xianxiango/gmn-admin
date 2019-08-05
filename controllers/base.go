@@ -136,6 +136,50 @@ func (this *BaseController) UploadImage() {
 	})
 }
 
+func (this *BaseController) UploadImage2() {
+	log.Print("UploadImage Enter")
+	this.Ctx.ResponseWriter.Header().Add("Access-Control-Allow-Origin", "*")
+	this.Ctx.ResponseWriter.Header().Add("Access-Control-Allow-Methods", "POST,GET,OPTIONS,DELETE")              //支持的http 动作
+	this.Ctx.ResponseWriter.Header().Add("Access-Control-Allow-Headers", "x-requested-with,multipart/form-data") //响应头 请按照自己需求添加。
+
+	fd, header, err := this.Ctx.Request.FormFile("file")
+
+	if err != nil {
+		this.jsonResult(err.Error())
+		return
+	}
+
+	ext := filepath.Ext(header.Filename)
+
+	fileId := systime.Now().Unix()
+	picId := fmt.Sprintf("%d", fileId)
+
+	prefix := beego.AppConfig.String("filePrefix")
+	p := "./static/upload/"
+	filename := p + picId + ext
+
+	export := prefix + picId + ext
+
+	os.MkdirAll(p, os.ModeAppend)
+	osfd, err := os.Create(filename)
+	if err != nil {
+		this.jsonResult(err.Error())
+		return
+	}
+	io.Copy(osfd, fd)
+
+	fd.Close()
+	osfd.Close()
+
+
+	this.Data["json"] = map[string]interface{}{
+		"location":    export,
+	}
+	this.ServeJSON()
+	this.StopRun()
+	
+}
+
 func (this *BaseController) DeleteUpload() {
 	ext := this.GetString("id")
 	p := "./static/upload/"
